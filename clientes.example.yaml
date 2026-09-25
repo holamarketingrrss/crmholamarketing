@@ -1,0 +1,26 @@
+# Copiá este archivo a clientes.yaml (no se sube al repo).
+# Solo son obligatorios: nombre, ig_user_id y notion_pagina_cliente.
+# El ig_user_id se obtiene con:  python -m informes_ig cuentas
+# La página del cliente es la de la base "Clientes" del Portal del cliente (URL o id).
+
+clientes:
+  - nombre: HOLAMARKETING
+    ig_user_id: "17841400000000000"
+    notion_pagina_cliente: https://app.notion.com/p/300ed8741abb8040a062db7b645ed97f
+    zona_horaria: America/Argentina/Buenos_Aires
+
+  - nombre: LUJIS
+    ig_user_id: "17841400000000001"
+    notion_pagina_cliente: https://app.notion.com/p/300ed8741abb809db0f0edb71b9820ee
+    # token_env: META_TOKEN_LUJIS          # si este cliente usa otro token
+    # zona_horaria: America/New_York
+    # Opcional: si no se completa, el pack se lee de "Ritmo editorial" en Estrategia.
+    # pack:
+    #   posteos_mes: 12
+    #   reels_mes: 4
+    #   historias_semana: 7
+    # Opcional: ids explícitos si la detección automática falla (ver `descubrir`).
+    # notion_estrategia: ...
+    # notion_plan_base: ...
+    # notion_informes_padre: ...          # dónde crear el informe (default: página del cliente)
+    # notas: "En octubre lanzan colección nueva el 15/10."
