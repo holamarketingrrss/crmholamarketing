@@ -44,9 +44,10 @@ class ErrorMeta(RuntimeError):
 
 
 class InstagramAPI:
-    def __init__(self, token: str, version: str = "v23.0", sesion: requests.Session | None = None):
+    def __init__(self, token: str, version: str = "v23.0", sesion: requests.Session | None = None,
+                 host: str = GRAPH):
         self.token = token
-        self.base = f"{GRAPH}/{version}"
+        self.base = f"{host}/{version}"
         self.http = sesion or requests.Session()
 
     # -- HTTP -----------------------------------------------------------------

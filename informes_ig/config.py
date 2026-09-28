@@ -33,8 +33,11 @@ class Pack:
 @dataclass
 class Cliente:
     nombre: str
-    ig_user_id: str
     notion_pagina_cliente: str
+    # "facebook": cuenta vinculada a un Business Manager (token de usuario del sistema).
+    # "instagram": cuenta solo de Instagram; el cliente autoriza con `conectar`.
+    conexion: str = "facebook"
+    ig_user_id: str = ""
     token_env: str = "META_ACCESS_TOKEN"
     zona_horaria: str = "America/Argentina/Buenos_Aires"
     # Opcionales: si no están, se descubren navegando la página del cliente.

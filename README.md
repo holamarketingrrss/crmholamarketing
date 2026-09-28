@@ -31,14 +31,31 @@ cp clientes.example.yaml clientes.yaml
 
 ### 2. Meta (Instagram)
 
-Requisitos: cada cliente con cuenta de Instagram **Business o Creator** vinculada a su página de Facebook, y esa página agregada al Business Manager de la agencia.
+Hace falta una app en [developers.facebook.com](https://developers.facebook.com) (tipo **Business**, gratis). Es la identidad con la que el script le pide los datos a Meta. Cada cliente se conecta de una de estas dos formas (`conexion` en `clientes.yaml`):
 
-1. En [developers.facebook.com](https://developers.facebook.com) creá una app tipo **Business** y agregá el producto *Instagram* (API con inicio de sesión de Facebook).
-2. En el **Business Manager** → *Usuarios del sistema* → creá un usuario del sistema (admin), asignale la app y los activos (páginas / cuentas de IG de los clientes).
-3. Generá un token del usuario del sistema con los permisos `instagram_basic`, `instagram_manage_insights`, `pages_show_list`, `pages_read_engagement` y `business_management`. Este token **no vence**. Guardalo en `META_ACCESS_TOKEN`.
-4. Corré `python -m informes_ig cuentas`: lista cada cuenta de IG con su `ig_user_id`. Copiá esos ids a `clientes.yaml`.
+#### a) Clientes dentro de un Business Manager / portfolio (`conexion: facebook`, default)
 
-> Como las cuentas son de clientes que la agencia administra, en general alcanza con que estén en el Business Manager, sin pasar por la revisión de la app de Meta (esa revisión se pide si se ofrece como producto a terceros). Si algún cliente no está en el Business Manager, puede generar su propio token y ponerlo en otra variable (`token_env` en `clientes.yaml`). Los permisos y versiones de la API de Meta cambian seguido: si algo falla, revisá la documentación vigente de la Instagram Graph API.
+Requisito: Instagram **Empresa o Creador** vinculado a su página de Facebook, y esa página dentro de un portfolio de la agencia.
+
+1. En la app, agregá el producto *Instagram* (API con inicio de sesión de Facebook).
+2. En **cada portfolio** → *Usuarios del sistema* → creá un usuario del sistema (admin) y asignale la app y las páginas / cuentas de IG de ese portfolio.
+3. Generá su token (vencimiento: nunca) con `instagram_basic`, `instagram_manage_insights`, `pages_show_list`, `pages_read_engagement` y `business_management`.
+4. **Un token por portfolio**: el primero en `META_ACCESS_TOKEN`, los demás en otras variables (`META_TOKEN_PORTFOLIO2`, …). En `clientes.yaml`, cada cliente indica el suyo con `token_env`.
+5. `python -m informes_ig cuentas --token-env META_TOKEN_PORTFOLIO2` lista las cuentas de ese token con su `ig_user_id`.
+
+#### b) Clientes que solo tienen Instagram (`conexion: instagram`)
+
+No necesitan Business Manager ni página de Facebook, solo que la cuenta sea **profesional** (Empresa o Creador; se cambia gratis desde la app de Instagram).
+
+1. En la app, agregá el producto *Instagram* → **API con inicio de sesión de Instagram**. Copiá el *ID* y la *clave secreta de la app de Instagram* a `INSTAGRAM_APP_ID` e `INSTAGRAM_APP_SECRET`.
+2. En esa misma pantalla, en la configuración del inicio de sesión, cargá una **URI de redireccionamiento** (puede ser `https://holamarketing.com.ar/`) y poné exactamente la misma en `INSTAGRAM_REDIRECT_URI`.
+3. Mientras la app no pase la revisión de Meta, cada cliente tiene que figurar como **evaluador de Instagram** en *Roles de la app* y aceptar la invitación desde su Instagram (*Configuración → Apps y sitios web → Invitaciones de evaluador*).
+4. `python -m informes_ig conectar --cliente LUJIS` muestra un link. Se lo mandás al cliente, entra con su Instagram y acepta.
+5. Llega a la página de la redirect URI con un `?code=...` en la dirección. Te pasa esa dirección y corrés `python -m informes_ig conectar --cliente LUJIS --codigo "<dirección>"`. El código dura pocos minutos y sirve una sola vez.
+
+El permiso queda guardado en `datos/tokens/` y dura 60 días; el script lo renueva solo cada vez que corre (si pasan más de 60 días sin correrlo, hay que volver a conectar).
+
+> Los permisos, nombres de menús y versiones de la API de Meta cambian seguido: si algo no coincide, revisá la documentación vigente de la Instagram Platform.
 
 ### 3. Claude
 
@@ -46,7 +63,7 @@ Requisitos: cada cliente con cuenta de Instagram **Business o Creator** vinculad
 
 ### 4. Clientes
 
-En `clientes.yaml` solo son obligatorios `nombre`, `ig_user_id` y `notion_pagina_cliente` (la URL de la página del cliente en la base *Clientes*). Todo lo demás se descubre solo. Verificalo con:
+En `clientes.yaml` son obligatorios `nombre` y `notion_pagina_cliente` (la URL de la página del cliente en la base *Clientes*), más `ig_user_id` si el cliente se conecta por Business Manager. Todo lo demás se descubre solo. Verificalo con:
 
 ```bash
 python -m informes_ig descubrir --todos

@@ -1,6 +1,8 @@
 """Línea de comandos.
 
-    python -m informes_ig cuentas
+    python -m informes_ig cuentas [--token-env META_TOKEN_PORTFOLIO2]
+    python -m informes_ig conectar --cliente LUJIS                 # link para el cliente
+    python -m informes_ig conectar --cliente LUJIS --codigo "URL"  # guardar su permiso
     python -m informes_ig descubrir --cliente HOLAMARKETING
     python -m informes_ig snapshot-historias --todos
     python -m informes_ig informe --cliente HOLAMARKETING --dias 90 --mes 2026-10
@@ -14,7 +16,7 @@ import json
 from datetime import date, datetime, time, timedelta, timezone
 from pathlib import Path
 
-from . import analisis, instagram, metricas, notion
+from . import analisis, instagram, instagram_login, metricas, notion
 from .config import Cliente, Config, cargar_config
 
 MESES = [
@@ -29,7 +31,13 @@ def main(argv: list[str] | None = None) -> None:
     ap.add_argument("--clientes", default="clientes.yaml", help="Archivo de configuración")
     sub = ap.add_subparsers(dest="comando", required=True)
 
-    sub.add_parser("cuentas", help="Lista las cuentas de IG a las que llega el token de Meta")
+    p = sub.add_parser("cuentas", help="Lista las cuentas de IG a las que llega un token de Meta")
+    p.add_argument("--token-env", default="META_ACCESS_TOKEN",
+                   help="Variable del .env con el token (uno por portfolio)")
+
+    p = sub.add_parser("conectar", help="Conecta un cliente que solo tiene Instagram")
+    p.add_argument("--cliente", required=True)
+    p.add_argument("--codigo", help="URL (o código) a la que llegó el cliente después de autorizar")
 
     for nombre, ayuda in (
         ("descubrir", "Muestra qué páginas y columnas de Notion detecta para el cliente"),
@@ -53,7 +61,9 @@ def main(argv: list[str] | None = None) -> None:
     cfg = cargar_config(args.clientes)
 
     if args.comando == "cuentas":
-        return cmd_cuentas(cfg)
+        return cmd_cuentas(cfg, args.token_env)
+    if args.comando == "conectar":
+        return cmd_conectar(cfg, cfg.cliente(args.cliente), args.codigo)
 
     clientes = cfg.clientes if args.todos else [cfg.cliente(args.cliente)]
     for c in clientes:
@@ -65,20 +75,47 @@ def main(argv: list[str] | None = None) -> None:
                 cmd_snapshot(cfg, c)
             else:
                 cmd_informe(cfg, c, args)
-        except (instagram.ErrorMeta, notion.ErrorNotion, RuntimeError) as e:
+        except (instagram.ErrorMeta, instagram_login.ErrorLogin, notion.ErrorNotion, RuntimeError) as e:
             print(f"  ✗ Error con {c.nombre}: {e}")
             if not args.todos:
                 raise SystemExit(1)
 
 
 # ---------------------------------------------------------------------------
-def cmd_cuentas(cfg: Config) -> None:
+def cmd_cuentas(cfg: Config, token_env: str) -> None:
     import os
 
-    api = instagram.InstagramAPI(os.environ.get("META_ACCESS_TOKEN", ""), cfg.meta_api_version)
+    api = instagram.InstagramAPI(os.environ.get(token_env, ""), cfg.meta_api_version)
     for cuenta in api.cuentas_disponibles():
         print(f"  {cuenta['usuario']:<30} ig_user_id={cuenta['ig_user_id']}  ({cuenta['pagina']}, "
               f"{cuenta['seguidores']} seguidores)")
+
+
+def cmd_conectar(cfg: Config, c: Cliente, codigo: str | None) -> None:
+    if c.conexion != "instagram":
+        raise SystemExit(f"{c.nombre} usa conexion: {c.conexion}. Poné `conexion: instagram` en clientes.yaml.")
+    if not codigo:
+        print(f"Mandale este link a {c.nombre}. Tiene que entrar con su usuario de Instagram y aceptar:\n")
+        print(f"  {instagram_login.url_autorizacion(c.slug)}\n")
+        print("Después de aceptar llega a otra página: que te pase la dirección completa de esa página")
+        print(f'y corré:  python -m informes_ig conectar --cliente "{c.nombre}" --codigo "<dirección>"')
+        return
+    registro = instagram_login.canjear_codigo(codigo)
+    instagram_login.guardar(instagram_login.ruta_token(cfg.dir_datos, c.slug), registro)
+    vence = datetime.fromisoformat(registro["vence"])
+    print(f"✓ {c.nombre} conectado como @{registro['usuario']} (se renueva solo; vence {vence:%d/%m/%Y})")
+
+
+def _api_instagram(cfg: Config, c: Cliente) -> tuple[instagram.InstagramAPI, str]:
+    """Cliente de la API y id de la cuenta, según cómo esté conectado el cliente."""
+    if c.conexion == "instagram":
+        registro = instagram_login.token_vigente(instagram_login.ruta_token(cfg.dir_datos, c.slug), c.nombre)
+        api = instagram.InstagramAPI(registro["access_token"], cfg.meta_api_version,
+                                     host=instagram_login.GRAPH_IG)
+        return api, registro["ig_user_id"]
+    if not c.ig_user_id:
+        raise SystemExit(f"Falta ig_user_id de {c.nombre} en clientes.yaml (sale de `cuentas`).")
+    return instagram.InstagramAPI(c.token_meta, cfg.meta_api_version), c.ig_user_id
 
 
 def cmd_descubrir(cfg: Config, c: Cliente) -> None:
@@ -102,8 +139,8 @@ def cmd_descubrir(cfg: Config, c: Cliente) -> None:
 
 
 def cmd_snapshot(cfg: Config, c: Cliente) -> None:
-    api = instagram.InstagramAPI(c.token_meta, cfg.meta_api_version)
-    historias = api.historias_activas(c.ig_user_id)
+    api, ig_id = _api_instagram(cfg, c)
+    historias = api.historias_activas(ig_id)
     ruta = cfg.dir_datos / c.slug / "historias.jsonl"
     instagram.guardar_historias(ruta, historias)
     print(f"  ✓ {len(historias)} historias activas guardadas en {ruta}")
@@ -130,11 +167,11 @@ def cmd_informe(cfg: Config, c: Cliente, args) -> None:
           f"{len(ya_planificado)} filas recientes en el plan")
 
     # 2. Instagram
-    iapi = instagram.InstagramAPI(c.token_meta, cfg.meta_api_version)
+    iapi, ig_id = _api_instagram(cfg, c)
     inicio = datetime.combine(desde, time.min, tzinfo=timezone.utc)
     fin = datetime.combine(hasta, time.max, tzinfo=timezone.utc)
-    perfil = iapi.perfil(c.ig_user_id)
-    publicaciones = iapi.publicaciones(c.ig_user_id, inicio, fin)
+    perfil = iapi.perfil(ig_id)
+    publicaciones = iapi.publicaciones(ig_id, inicio, fin)
     historias = [
         h for h in instagram.leer_historias(cfg.dir_datos / c.slug / "historias.jsonl")
         if inicio <= instagram._parse_fecha(h["timestamp"]) <= fin

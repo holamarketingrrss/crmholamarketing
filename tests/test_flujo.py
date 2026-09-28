@@ -39,8 +39,8 @@ class NotionFalso:
 
 
 class IGFalso:
-    def __init__(self, token, version):
-        pass
+    def __init__(self, token, version, **kw):
+        self.token, self.host = token, kw.get("host")
 
     def perfil(self, uid):
         return {"username": "lujis", "followers_count": 1000}
