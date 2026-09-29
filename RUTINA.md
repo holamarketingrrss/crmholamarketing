@@ -23,6 +23,15 @@ destino no existe o no se puede abrir, no escribas nada para ese cliente y repor
 | EN LA CRESTA | @vivamosenlacresta | 17841405473067572 | https://app.notion.com/p/37ced8741abb8034ac94e594a09ed913 | collection://3b3ed874-1abb-82f6-9be2-0744103c8260 |
 | BUNBURY MIAMI | @bunburymiami | 17841401726909905 | https://app.notion.com/p/37ced8741abb8045adb2e7a7d30825cb | collection://8f6ed874-1abb-8264-bfca-87a0dc611644 |
 
+Conectados por **inicio de sesión de Instagram** (cada uno con su token en la variable indicada):
+
+| Cliente | Instagram | IG ID | Token | Página del cliente | Plan de publicaciones (data source) |
+|---|---|---|---|---|---|
+| YVETTE | @yvettepuente | 17841401689562551 | IG_TOKEN_YVETTE | https://app.notion.com/p/300ed8741abb80dc9753d213f1d6f1f6 | collection://300ed874-1abb-81c0-a3ee-000bcecfa93e |
+| MARIETTS FLAVORS | @mariettsflavors | 17841459956224509 | IG_TOKEN_MARIETTS | https://app.notion.com/p/3b2ed8741abb80248f33fa2321ae0160 | collection://ca0ed874-1abb-8292-94c9-07d52c411e10 |
+| LUJIS | @lujis.miami | 17841468353440281 | IG_TOKEN_LUJIS | https://app.notion.com/p/300ed8741abb809db0f0edb71b9820ee | collection://300ed874-1abb-81e7-9654-000ba547dcf3 |
+| KALEB | @kalebresidence | 17841447961624815 | IG_TOKEN_KALEB | https://app.notion.com/p/300ed8741abb80dcae7adaa9292ac4c9 | collection://300ed874-1abb-81a4-a9e5-000b0800aafd |
+
 La página **Estrategia** de cada cliente es una subpágina de su *Página del cliente*.
 
 Con datos en Meta pero **sin portal en Notion** (no se procesan hasta que tengan uno):
@@ -36,7 +45,12 @@ Con datos en Meta pero **sin portal en Notion** (no se procesan hasta que tengan
 ```bash
 pip install -q requests 2>/dev/null
 python -m informes_ig.datos --ig-id <IG ID> --dias 90
+
+# Clientes conectados por inicio de sesión de Instagram:
+python -m informes_ig.datos --ig-id <IG ID> --dias 90 --instagram-login --token-env <Token>
 ```
+
+Si el JSON trae `aviso_token`, incluilo textual en el cierre (hay que actualizar ese token).
 
 Devuelve un JSON con el perfil y las métricas ya calculadas: rendimiento por formato, mejores y
 peores posteos, frecuencia por mes, alcance por día y franja horaria, efecto de los CTA tipo
@@ -81,7 +95,7 @@ Para el **mes siguiente**, creá una fila por idea en *Plan de publicaciones*:
 | Columna | Valor |
 |---|---|
 | Name | Título de la idea |
-| Estado | **Idea** |
+| Estado | **A revisar (IA)**. Si la base no tiene esa opción, usá **Idea** y avisalo en el cierre (la opción se agrega a mano en Notion; no se puede crear desde acá). |
 | Formato | Carrusel, Reel, Foto o Stories (opciones existentes de la base) |
 | Pilar | Uno de los pilares existentes de la base |
 | Fecha de publicación | Fecha sugerida en los mejores días según los datos |

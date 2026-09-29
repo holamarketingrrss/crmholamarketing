@@ -129,3 +129,20 @@ def test_cliente_facebook_sin_ig_user_id(tmp_path, monkeypatch):
     with pytest.raises(SystemExit, match="Falta ig_user_id"):
         cli._api_instagram(cfg, cfg.cliente("HM"))
     assert isinstance(instagram.InstagramAPI("t").base, str)
+
+
+def test_datos_renueva_token_instagram(monkeypatch):
+    from informes_ig import datos
+
+    respuesta = {"access_token": "mismo", "expires_in": 5184000}
+    monkeypatch.setattr(datos.requests, "get", lambda *a, **k: Resp(respuesta))
+    assert datos._renovar_token_instagram("mismo", "IG_TOKEN_X") == ("mismo", None)
+
+    respuesta["access_token"] = "nuevo"
+    token, aviso = datos._renovar_token_instagram("mismo", "IG_TOKEN_X")
+    assert token == "nuevo" and "IG_TOKEN_X" in aviso and "60 días" in aviso
+
+    monkeypatch.setattr(datos.requests, "get",
+                        lambda *a, **k: Resp({"error": {"message": "expirado"}}, 400))
+    token, aviso = datos._renovar_token_instagram("viejo", "IG_TOKEN_X")
+    assert token == "viejo" and "expirado" in aviso
