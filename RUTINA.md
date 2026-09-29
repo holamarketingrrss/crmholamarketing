@@ -7,22 +7,27 @@ Notion se hace con el **conector de Notion**.
 Si el pedido dice **"modo prueba"**, no escribas nada en Notion: mostrá el informe y las ideas en
 la respuesta y listo.
 
-## Clientes
+## Clientes y destinos en Notion
 
-| Cliente | Instagram | IG ID |
-|---|---|---|
-| HOLAMARKETING | @holamarketing | 17841449615689473 |
-| iPhone Team | @iphoneteam.arg | 17841454516836263 |
-| En la Cresta | @vivamosenlacresta | 17841405473067572 |
-| Bunbury Miami | @bunburymiami | 17841401726909905 |
-| TECNO | @tecnomorenooficial | 17841453209995629 |
-| SWISS SNOW EXPERIENCE | @swisssnowexperience | 17841478412571886 |
-| PAUSA | @enjoypausa | 17841472701688228 |
-| Claudio García | @byclaudiogarcia | 17841409059528048 |
-| Design Your Content | @designyourcontent | 17841462423348395 |
+**Escribí solo en estos destinos.** El informe va como subpágina de la *Página del cliente*; las
+ideas van como filas nuevas en su *Plan de publicaciones* (el data source indicado). No crees
+bases nuevas, no escribas en la página de otro cliente y no busques destinos alternativos: si un
+destino no existe o no se puede abrir, no escribas nada para ese cliente y reportalo.
 
-La página de cada cliente en Notion está en **Portal del cliente → Clientes**. Buscala por el
-nombre del cliente; si no la encontrás con certeza, no adivines: decilo y seguí con el siguiente.
+| Cliente | Instagram | IG ID | Página del cliente | Plan de publicaciones (data source) |
+|---|---|---|---|---|
+| HOLAMARKETING | @holamarketing | 17841449615689473 | https://app.notion.com/p/300ed8741abb8040a062db7b645ed97f | collection://300ed874-1abb-81ea-98b6-000bd1e6ad64 |
+| TECNO | @tecnomorenooficial | 17841453209995629 | https://app.notion.com/p/300ed8741abb804baf02f2c36754fa83 | collection://300ed874-1abb-8176-a68c-000b327a0557 |
+| SWISS SNOW EXPERIENCE | @swisssnowexperience | 17841478412571886 | https://app.notion.com/p/34fed8741abb80ce9859dace6e527f1b | collection://34fed874-1abb-81a1-9cc4-000b667f7a49 |
+| PAUSA | @enjoypausa | 17841472701688228 | https://app.notion.com/p/2feed8741abb80be82f6c4b11e872aa9 | collection://c7446403-856f-4862-af6f-0a0b8b15a8be |
+| EN LA CRESTA | @vivamosenlacresta | 17841405473067572 | https://app.notion.com/p/37ced8741abb8034ac94e594a09ed913 | collection://3b3ed874-1abb-82f6-9be2-0744103c8260 |
+| BUNBURY MIAMI | @bunburymiami | 17841401726909905 | https://app.notion.com/p/37ced8741abb8045adb2e7a7d30825cb | collection://8f6ed874-1abb-8264-bfca-87a0dc611644 |
+
+La página **Estrategia** de cada cliente es una subpágina de su *Página del cliente*.
+
+Con datos en Meta pero **sin portal en Notion** (no se procesan hasta que tengan uno):
+@iphoneteam.arg (17841454516836263), @byclaudiogarcia (17841409059528048),
+@designyourcontent (17841462423348395).
 
 ## Pasos por cliente
 
