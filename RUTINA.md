@@ -64,6 +64,14 @@ Si falla por permisos o porque la cuenta no aparece, anotalo y seguí con el sig
 Dentro de la página del cliente:
 - **Estrategia**: leé pilares, ritmo editorial (cantidad de posteos, reels e historias del pack),
   tono, público, objetivos del trimestre y límites.
+- **Estrategia del mes siguiente**: buscá dentro de la página Estrategia la subpágina
+  **🧭 Estrategia · <Mes> <año> · …** del mes para el que vas a cargar ideas (la arma el Agente de
+  Estrategia, ver `ESTRATEGIA.md`). Las ideas, el calendario y los copys tienen que seguir su
+  objetivo, enfoque, temas, reparto de formatos y pilares, objetivo comercial y fechas clave.
+  - Título con **Aprobada**: seguila.
+  - Título con **Boceto** (sin aprobar): seguila igual y avisalo en el cierre ("estrategia de
+    <mes> sin aprobar").
+  - Si no existe: usá solo la estrategia base y avisalo en el cierre.
 - **Planificación de contenido → Plan de publicaciones**: mirá las columnas de la base (los
   nombres cambian un poco entre clientes: el estado puede no tener nombre, la fecha puede estar
   sin tilde, los pilares son propios de cada cliente) y las filas de los últimos dos meses, para
@@ -106,8 +114,9 @@ Para el **mes siguiente**, creá una fila por idea en *Plan de publicaciones*:
 Reglas:
 - Cantidad: exactamente lo que marca el ritmo editorial para el mes (feed). Historias: una fila
   por semana con la secuencia diaria.
-- Cada idea se apoya en algo que funcionó o corrige algo que no; explicalo al principio del cuerpo
-  de la página de la idea ("Por qué esta idea: …").
+- Cada idea se apoya en algo que funcionó o corrige algo que no, y en la estrategia del mes;
+  explicalo al principio del cuerpo de la página de la idea ("Por qué esta idea: …").
+- Si el plan ya tiene filas para ese mes, contalas dentro del ritmo y cargá solo las que faltan.
 - Aprovechá fechas especiales del mes relevantes para el público.
 - No repitas ideas que ya están en el plan.
 - Si a la base le falta alguna columna, poné ese contenido en el cuerpo de la página de la idea.
