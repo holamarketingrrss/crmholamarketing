@@ -65,7 +65,7 @@ Dentro de la página del cliente:
 - **Estrategia**: leé pilares, ritmo editorial (cantidad de posteos, reels e historias del pack),
   tono, público, objetivos del trimestre y límites.
 - **Estrategia del mes siguiente**: buscá dentro de la página Estrategia la subpágina
-  **🧭 Estrategia · <Mes> <año> · …** del mes para el que vas a cargar ideas (la arma el Agente de
+  **Estrategia · <Mes> <año> · …** del mes para el que vas a cargar ideas (la arma el Agente de
   Estrategia, ver `ESTRATEGIA.md`). Las ideas, el calendario y los copys tienen que seguir su
   objetivo, enfoque, temas, reparto de formatos y pilares, objetivo comercial y fechas clave.
   - Título con **Aprobada**: seguila.

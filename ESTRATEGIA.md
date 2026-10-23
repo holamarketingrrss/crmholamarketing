@@ -26,11 +26,11 @@ Dentro de la página **Estrategia**:
 - La estrategia base: pilares, ritmo editorial, tono, público, objetivos del trimestre, límites.
   Es lo aprobado por el cliente; el mes nuevo se apoya en eso y no lo contradice.
 - Los meses anteriores (bloques tipo "🔥 MAYO – …" en la página, o subpáginas
-  "🧭 Estrategia · <Mes> <año> · …"), para dar continuidad y no repetir el mismo enfoque.
+  "Estrategia · <Mes> <año> · …"), para dar continuidad y no repetir el mismo enfoque.
 
 ### 2. Insumos del mes
 
-Buscá dentro de la página **Estrategia** la subpágina **📥 Insumos del mes**. Ahí el equipo pega
+Buscá dentro de la página **Estrategia** la subpágina **Insumos del mes** (ícono 📥). Ahí el equipo pega
 (o adjunta) el export del chat de WhatsApp con el cliente, las notas de Gemini de las reuniones y
 cualquier novedad (lanzamientos, promos, cambios de precio, eventos).
 
@@ -61,7 +61,7 @@ insumos. Solo las que sirvan al negocio.
 ### 5. Escribir el boceto
 
 Creá una subpágina dentro de la página **Estrategia**:
-**🧭 Estrategia · <Mes> <año> · Boceto** (por ejemplo "🧭 Estrategia · Noviembre 2026 · Boceto").
+**Estrategia · <Mes> <año> · Boceto** con ícono 🧭 (por ejemplo "Estrategia · Noviembre 2026 · Boceto").
 Si ya existe una para ese mes, no la pises: reportalo y seguí con el siguiente cliente.
 
 Al principio, un callout: "Boceto armado por el Agente de Estrategia. Para aprobarlo, cambiá
