@@ -129,7 +129,13 @@ Reglas:
     estrategia del mes.
   - Acompañá los posteos del feed del mismo mes (avisos de reels, encuestas sobre el tema de la
     semana) y las fechas especiales.
-  - Si ese mes ya tiene un ticket de historias, no crees otro: avisalo en el cierre.
+  - Solo días de ese mes: no sumes días del mes siguiente aunque la semana siga.
+  - Respetá lo que diga el ticket del mes anterior: días que el negocio cierra, textos fijos,
+    links reales, notas para el equipo (por ejemplo, no mostrar caras del personal). Nunca
+    inventes testimonios, precios ni ofertas: dejá un marcador para completar.
+  - Si ese mes ya tiene un ticket de historias (por ejemplo, uno armado por el equipo), no crees
+    otro: sumá los días que faltan al final de ese ticket, sin tocar lo que ya tiene, y avisalo
+    en el cierre.
 - Cada idea se apoya en algo que funcionó o corrige algo que no, y en la estrategia del mes;
   explicalo al principio del cuerpo de la página de la idea ("Por qué esta idea: …").
 - Si el plan ya tiene filas para ese mes, contalas dentro del ritmo y cargá solo las que faltan.
