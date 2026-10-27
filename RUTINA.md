@@ -108,12 +108,28 @@ Para el **mes siguiente**, creá una fila por idea en *Plan de publicaciones*:
 | Pilar | Uno de los pilares existentes de la base |
 | Fecha de publicación | Fecha sugerida en los mejores días según los datos |
 | Objetivo | Qué busca la pieza |
-| Desarrollo | Guion del reel (gancho + escenas + cierre), texto slide por slide del carrusel, o la secuencia de historias día por día |
+| Desarrollo | Guion del reel (gancho + escenas + cierre) o texto slide por slide del carrusel. En el ticket de historias queda vacío: todo va en el cuerpo de la página (ver abajo) |
 | Copy + CTA | Copy listo para publicar con su llamado a la acción |
 
 Reglas:
-- Cantidad: exactamente lo que marca el ritmo editorial para el mes (feed). Historias: una fila
-  por semana con la secuencia diaria.
+- Cantidad: exactamente lo que marca el ritmo editorial para el mes (feed), **una fila por
+  posteo**.
+- Historias: **un solo ticket por mes**, nunca uno por semana. Se llama **HISTORIAS <MES>** (por
+  ejemplo HISTORIAS NOVIEMBRE), con Formato Stories, el Estado de arriba y como fecha el día 1 del
+  mes. Las columnas Objetivo, Desarrollo y Copy + CTA quedan vacías: **todo el contenido va en el
+  cuerpo de la página**, día por día durante todo el mes, según el ritmo de historias del pack de
+  ese cliente (días y cantidad por día).
+  - Formato del cuerpo: copiá la estructura del ticket "Historias <mes anterior>" de ese mismo
+    cliente (abrilo antes de escribir). Si no tiene uno, usá esta: título
+    `# 📅 <MES> | STORIES <CLIENTE>`, un encabezado por semana (`# SEMANA 1`, …), un encabezado
+    por día (`### 📍LUNES 2`), y dentro de cada día **Historia 1**, **Historia 2**… con el texto
+    listo para la placa (Frase / Encuesta con sus opciones / Pregunta / Link con el texto del
+    botón) y entre paréntesis qué mostrar en la imagen o el video. Separá los días con `---`.
+  - Arriba de todo, un párrafo corto "Por qué estas historias: …" con el apoyo en datos y
+    estrategia del mes.
+  - Acompañá los posteos del feed del mismo mes (avisos de reels, encuestas sobre el tema de la
+    semana) y las fechas especiales.
+  - Si ese mes ya tiene un ticket de historias, no crees otro: avisalo en el cierre.
 - Cada idea se apoya en algo que funcionó o corrige algo que no, y en la estrategia del mes;
   explicalo al principio del cuerpo de la página de la idea ("Por qué esta idea: …").
 - Si el plan ya tiene filas para ese mes, contalas dentro del ritmo y cargá solo las que faltan.
