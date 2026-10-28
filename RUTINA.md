@@ -31,6 +31,9 @@ Conectados por **inicio de sesión de Instagram** (cada uno con su token en la v
 | MARIETTS FLAVORS | @mariettsflavors | 17841459956224509 | IG_TOKEN_MARIETTS | https://app.notion.com/p/3b2ed8741abb80248f33fa2321ae0160 | collection://ca0ed874-1abb-8292-94c9-07d52c411e10 |
 | LUJIS | @lujis.miami | 17841468353440281 | IG_TOKEN_LUJIS | https://app.notion.com/p/300ed8741abb809db0f0edb71b9820ee | collection://300ed874-1abb-81e7-9654-000ba547dcf3 |
 | KALEB | @kalebresidence | 17841447961624815 | IG_TOKEN_KALEB | https://app.notion.com/p/300ed8741abb80dcae7adaa9292ac4c9 | collection://300ed874-1abb-81a4-a9e5-000b0800aafd |
+| JOAH | (la del token) | me | IG_TOKEN_JOAH | https://app.notion.com/p/300ed8741abb80c3ac83d4312f3738ba | collection://300ed874-1abb-81c7-b45d-000b028cc19b |
+
+Si el IG ID es `me`, pasalo tal cual a `--ig-id`: el token identifica la cuenta.
 
 La página **Estrategia** de cada cliente es una subpágina de su *Página del cliente*.
 
