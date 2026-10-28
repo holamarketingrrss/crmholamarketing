@@ -1,0 +1,36 @@
+# Copiá este archivo a clientes.yaml (no se sube al repo).
+# La página del cliente es la de la base "Clientes" del Portal del cliente (URL o id).
+#
+# Dos formas de conectar cada cliente:
+#   conexion: facebook   (default) cuenta dentro de un Business Manager / portfolio.
+#                        Necesita ig_user_id (sale de `cuentas`) y el token de ese portfolio.
+#   conexion: instagram  cuenta que solo tiene Instagram. El cliente autoriza una vez con
+#                        `python -m informes_ig conectar --cliente NOMBRE`. No lleva ig_user_id.
+
+clientes:
+  # Cliente en el portfolio 1 (usa META_ACCESS_TOKEN)
+  - nombre: HOLAMARKETING
+    ig_user_id: "17841400000000000"
+    notion_pagina_cliente: https://app.notion.com/p/300ed8741abb8040a062db7b645ed97f
+
+  # Cliente en otro portfolio: su token va en otra variable del .env
+  - nombre: KEMUEL
+    ig_user_id: "17841400000000002"
+    token_env: META_TOKEN_PORTFOLIO2
+    notion_pagina_cliente: https://app.notion.com/p/...
+
+  # Cliente que solo tiene Instagram
+  - nombre: LUJIS
+    conexion: instagram
+    notion_pagina_cliente: https://app.notion.com/p/300ed8741abb809db0f0edb71b9820ee
+    # zona_horaria: America/New_York      # default America/Argentina/Buenos_Aires
+    # Opcional: si no se completa, el pack se lee de "Ritmo editorial" en Estrategia.
+    # pack:
+    #   posteos_mes: 12
+    #   reels_mes: 4
+    #   historias_semana: 7
+    # Opcional: ids explícitos si la detección automática falla (ver `descubrir`).
+    # notion_estrategia: ...
+    # notion_plan_base: ...
+    # notion_informes_padre: ...          # dónde crear el informe (default: página del cliente)
+    # notas: "En octubre lanzan colección nueva el 15/10."
