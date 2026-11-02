@@ -31,6 +31,9 @@ Conectados por **inicio de sesión de Instagram** (cada uno con su token en la v
 | MARIETTS FLAVORS | @mariettsflavors | 17841459956224509 | IG_TOKEN_MARIETTS | https://app.notion.com/p/3b2ed8741abb80248f33fa2321ae0160 | collection://ca0ed874-1abb-8292-94c9-07d52c411e10 |
 | LUJIS | @lujis.miami | 17841468353440281 | IG_TOKEN_LUJIS | https://app.notion.com/p/300ed8741abb809db0f0edb71b9820ee | collection://300ed874-1abb-81e7-9654-000ba547dcf3 |
 | KALEB | @kalebresidence | 17841447961624815 | IG_TOKEN_KALEB | https://app.notion.com/p/300ed8741abb80dcae7adaa9292ac4c9 | collection://300ed874-1abb-81a4-a9e5-000b0800aafd |
+| JOAH | (la del token) | me | IG_TOKEN_JOAH | https://app.notion.com/p/300ed8741abb80c3ac83d4312f3738ba | collection://300ed874-1abb-81c7-b45d-000b028cc19b |
+
+Si el IG ID es `me`, pasalo tal cual a `--ig-id`: el token identifica la cuenta.
 
 La página **Estrategia** de cada cliente es una subpágina de su *Página del cliente*.
 
@@ -108,12 +111,34 @@ Para el **mes siguiente**, creá una fila por idea en *Plan de publicaciones*:
 | Pilar | Uno de los pilares existentes de la base |
 | Fecha de publicación | Fecha sugerida en los mejores días según los datos |
 | Objetivo | Qué busca la pieza |
-| Desarrollo | Guion del reel (gancho + escenas + cierre), texto slide por slide del carrusel, o la secuencia de historias día por día |
+| Desarrollo | Guion del reel (gancho + escenas + cierre) o texto slide por slide del carrusel. En el ticket de historias queda vacío: todo va en el cuerpo de la página (ver abajo) |
 | Copy + CTA | Copy listo para publicar con su llamado a la acción |
 
 Reglas:
-- Cantidad: exactamente lo que marca el ritmo editorial para el mes (feed). Historias: una fila
-  por semana con la secuencia diaria.
+- Cantidad: exactamente lo que marca el ritmo editorial para el mes (feed), **una fila por
+  posteo**.
+- Historias: **un solo ticket por mes**, nunca uno por semana. Se llama **HISTORIAS <MES>** (por
+  ejemplo HISTORIAS NOVIEMBRE), con Formato Stories, el Estado de arriba y como fecha el día 1 del
+  mes. Las columnas Objetivo, Desarrollo y Copy + CTA quedan vacías: **todo el contenido va en el
+  cuerpo de la página**, día por día durante todo el mes, según el ritmo de historias del pack de
+  ese cliente (días y cantidad por día).
+  - Formato del cuerpo: copiá la estructura del ticket "Historias <mes anterior>" de ese mismo
+    cliente (abrilo antes de escribir). Si no tiene uno, usá esta: título
+    `# 📅 <MES> | STORIES <CLIENTE>`, un encabezado por semana (`# SEMANA 1`, …), un encabezado
+    por día (`### 📍LUNES 2`), y dentro de cada día **Historia 1**, **Historia 2**… con el texto
+    listo para la placa (Frase / Encuesta con sus opciones / Pregunta / Link con el texto del
+    botón) y entre paréntesis qué mostrar en la imagen o el video. Separá los días con `---`.
+  - Arriba de todo, un párrafo corto "Por qué estas historias: …" con el apoyo en datos y
+    estrategia del mes.
+  - Acompañá los posteos del feed del mismo mes (avisos de reels, encuestas sobre el tema de la
+    semana) y las fechas especiales.
+  - Solo días de ese mes: no sumes días del mes siguiente aunque la semana siga.
+  - Respetá lo que diga el ticket del mes anterior: días que el negocio cierra, textos fijos,
+    links reales, notas para el equipo (por ejemplo, no mostrar caras del personal). Nunca
+    inventes testimonios, precios ni ofertas: dejá un marcador para completar.
+  - Si ese mes ya tiene un ticket de historias (por ejemplo, uno armado por el equipo), no crees
+    otro: sumá los días que faltan al final de ese ticket, sin tocar lo que ya tiene, y avisalo
+    en el cierre.
 - Cada idea se apoya en algo que funcionó o corrige algo que no, y en la estrategia del mes;
   explicalo al principio del cuerpo de la página de la idea ("Por qué esta idea: …").
 - Si el plan ya tiene filas para ese mes, contalas dentro del ritmo y cargá solo las que faltan.
