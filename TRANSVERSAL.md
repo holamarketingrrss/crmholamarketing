@@ -35,7 +35,7 @@ cliente en mayúsculas, y adentro:
 
 ```
 01 Marca y manuales
-02 Accesos            (solo links o instrucciones; nunca contraseñas en texto)
+02 Accesos
 03 Material del cliente (fotos y videos que manda)
 04 Producciones
 05 Contenido publicado
@@ -49,17 +49,15 @@ de la carpeta en la página del cliente.
 ### 4. Mail de bienvenida
 
 Armá un **borrador** en Gmail (no lo mandes: lo revisa y lo manda Yvette) para el mail del cliente
-que figure en la ficha. Texto: el modelo de Yvette en la página **Mail de bienvenida** de Notion
-(cuando exista); si no existe, este:
-
-- Bienvenida corta y cercana, con quiénes van a estar en el grupo de WhatsApp.
-- Checklist de lo que necesitamos, con el link a la carpeta *03 Material del cliente* para subir:
-  logo y manual de marca · fotos y videos que ya tenga · accesos a las redes (por el canal que
-  indique el equipo, nunca por mail) · página web · contenido o campañas anteriores · fechas
-  importantes del negocio.
-- Qué pasa después: estrategia del primer mes y primera entrega en la primera semana.
+que figure en la ficha, con la plantilla `plantillas/mail-bienvenida.md`. Seguí sus reglas de
+adaptación: accesos solo de lo contratado, rubro, y cronograma con fechas reales desde hoy. El
+recibo del pago lo adjunta el equipo: avisalo en el cierre.
 
 Si la ficha no tiene mail, no lo inventes: avisalo en el cierre.
+
+**Mail de acuerdo** (`plantillas/mail-acuerdo.md`): es el que se manda cuando hay acuerdo pero
+todavía no hay contrato ni pago. Esta rutina no lo dispara sola; armalo como borrador cuando lo
+pidan ("mail de acuerdo para <cliente>").
 
 ### 5. Checklist interno
 
