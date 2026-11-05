@@ -13,6 +13,18 @@ cliente*), salvo la página de **Tendencias**, que va como subpágina de la *Pá
 toques el contenido existente de esas páginas: todo lo nuevo va en subpáginas (en Competidores,
 sumá bloques arriba de los anteriores).
 
+
+## Centro de control
+
+Antes de empezar, abrí la fila **Estrategia mensual** de la base **Agentes** del Centro de control HM OS
+(`collection://e373f2ad-ce2a-4a80-a7ed-19c91cc7f064`). Si el **Estado** es **Pausado**, no hagas
+nada más y respondé "Agente pausado desde el Centro de control". En **modo prueba** no escribas
+en esa base.
+
+Al terminar, en esa misma fila: **Última corrida** = hoy y **Resultado** = una o dos líneas con lo
+que hiciste y los problemas (lo mismo que el cierre, resumido). Si quedó algo que solo Yvette puede
+resolver, escribilo en **Necesita de Yvette** (reemplazá lo anterior). No cambies el Estado.
+
 ## Criterio (Hola Marketing OS, cap. Estrategia)
 
 - Primero entender el negocio, después la marca. Una idea que no ayuda a vender no entra.

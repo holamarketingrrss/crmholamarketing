@@ -13,6 +13,18 @@ respuesta y listo.
 Escribí solo en esa base. No toques la copia "UGC y Creadoras · COPIA …" ni otras bases. No
 cambies Cliente, Estado, Propuesta, Precio ni los datos de contacto: esos los maneja el equipo.
 
+
+## Centro de control
+
+Antes de empezar, abrí la fila **Evaluación de UGC** de la base **Agentes** del Centro de control HM OS
+(`collection://e373f2ad-ce2a-4a80-a7ed-19c91cc7f064`). Si el **Estado** es **Pausado**, no hagas
+nada más y respondé "Agente pausado desde el Centro de control". En **modo prueba** no escribas
+en esa base.
+
+Al terminar, en esa misma fila: **Última corrida** = hoy y **Resultado** = una o dos líneas con lo
+que hiciste y los problemas (lo mismo que el cierre, resumido). Si quedó algo que solo Yvette puede
+resolver, escribilo en **Necesita de Yvette** (reemplazá lo anterior). No cambies el Estado.
+
 ## Pasos
 
 ### 1. A quién revisar

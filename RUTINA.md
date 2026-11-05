@@ -7,6 +7,18 @@ Notion se hace con el **conector de Notion**.
 Si el pedido dice **"modo prueba"**, no escribas nada en Notion: mostrá el informe y las ideas en
 la respuesta y listo.
 
+
+## Centro de control
+
+Antes de empezar, abrí la fila **Informes e ideas de contenido** de la base **Agentes** del Centro de control HM OS
+(`collection://e373f2ad-ce2a-4a80-a7ed-19c91cc7f064`). Si el **Estado** es **Pausado**, no hagas
+nada más y respondé "Agente pausado desde el Centro de control". En **modo prueba** no escribas
+en esa base.
+
+Al terminar, en esa misma fila: **Última corrida** = hoy y **Resultado** = una o dos líneas con lo
+que hiciste y los problemas (lo mismo que el cierre, resumido). Si quedó algo que solo Yvette puede
+resolver, escribilo en **Necesita de Yvette** (reemplazá lo anterior). No cambies el Estado.
+
 ## Clientes y destinos en Notion
 
 **Escribí solo en estos destinos.** El informe va como subpágina de la *Página del cliente*; las

@@ -10,6 +10,18 @@ Criterio (Hola Marketing OS, cap. 8): un cliente es cliente cuando **firmó el c
 Antes de eso no se arranca nada. El objetivo es que en menos de una semana vea movimiento,
 organización y un equipo trabajando detrás de su marca.
 
+
+## Centro de control
+
+Antes de empezar, abrí la fila **Onboarding y recordatorios** de la base **Agentes** del Centro de control HM OS
+(`collection://e373f2ad-ce2a-4a80-a7ed-19c91cc7f064`). Si el **Estado** es **Pausado**, no hagas
+nada más y respondé "Agente pausado desde el Centro de control". En **modo prueba** no escribas
+en esa base.
+
+Al terminar, en esa misma fila: **Última corrida** = hoy y **Resultado** = una o dos líneas con lo
+que hiciste y los problemas (lo mismo que el cierre, resumido). Si quedó algo que solo Yvette puede
+resolver, escribilo en **Necesita de Yvette** (reemplazá lo anterior). No cambies el Estado.
+
 ## Parte 1 · Onboarding
 
 ### 1. A quién
