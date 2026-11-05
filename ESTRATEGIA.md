@@ -9,7 +9,9 @@ respuesta y listo.
 
 Clientes, páginas y bases: usá las mismas tablas de `RUTINA.md` ("Clientes y destinos en Notion").
 Escribí solo dentro de la página **Estrategia** de cada cliente (subpágina de su *Página del
-cliente*). No toques el contenido existente de esa página: todo lo nuevo va en subpáginas.
+cliente*), salvo la página de **Tendencias**, que va como subpágina de la *Página del cliente*. No
+toques el contenido existente de esas páginas: todo lo nuevo va en subpáginas (en Competidores,
+sumá bloques arriba de los anteriores).
 
 ## Criterio (Hola Marketing OS, cap. Estrategia)
 
@@ -52,13 +54,60 @@ cualquier novedad (lanzamientos, promos, cambios de precio, eventos).
 - **Plan de publicaciones**: qué se planificó y qué se publicó el mes en curso (estado
   Publicado vs. Idea), y qué ya está cargado para el mes siguiente.
 
-### 4. Contexto del mes siguiente
+### 4. Competidores
+
+Usá la subpágina **Competidores** (ícono 🔎) dentro de la página **Estrategia**. Funciona en dos
+pasos, porque la lista la aprueba Yvette:
+
+1. **Propuesta.** Si la página no existe o no tiene ninguna cuenta tildada, creala (o completala)
+   con 5 a 8 cuentas de Instagram que compiten por el mismo público: mismo rubro y misma zona,
+   o referentes que el público sigue. Para encontrarlas usá búsqueda web y los insumos del mes (si
+   el cliente nombró a alguien, va primero). Cada una como tarea sin tildar:
+   `- [ ] @usuario · qué es · por qué la proponemos`.
+   Arriba, un callout: "Tildá las cuentas que querés que analicemos. El próximo mes el Agente de
+   Estrategia analiza solo las tildadas. Podés sumar otras a mano."
+   Este mes la estrategia sale sin análisis de competidores: avisalo en el cierre.
+2. **Análisis.** Con las cuentas tildadas, corré:
+
+   ```bash
+   python -m informes_ig.ugc --usuario <usuario1> --usuario <usuario2> ...
+   ```
+
+   (es el mismo script de UGC; acá ignorá la `sugerencia`). Devuelve seguidores, frecuencia,
+   interacción mediana, % de reels y sus 3 mejores posteos. Mirá esos posteos y escribí en la
+   página un bloque **Análisis · <Mes> <año>** arriba de los anteriores (no borres los viejos):
+   - Tabla: cuenta · seguidores · posteos en 30 días · interacción % · % reels.
+   - Qué les está funcionando (con link al posteo) y por qué creés que funciona.
+   - Qué hacen que nosotros no, y qué hacemos mejor.
+   - 2 o 3 ideas para tomar, adaptadas a la marca (no copiar).
+   Si una cuenta vuelve con `"visible": false`, anotalo ("cuenta personal o privada, Meta no la
+   muestra") y seguí con el resto. Si no hay `META_ACCESS_TOKEN`, analizá solo lo que se ve en la
+   web y decilo.
+
+### 5. Tendencias del nicho
+
+Creá una subpágina en la *Página del cliente* (no en Estrategia):
+**Tendencias · <Mes> <año>** con ícono 📈. Si ya existe para ese mes, no la pises: usala.
+
+- Buscá en la web tendencias del rubro y del público del cliente para el mes siguiente: temas de
+  conversación, formatos y estilos de video que están creciendo, audios o dinámicas en Instagram,
+  novedades del sector. Solo de los últimos 30 días y con fuente.
+- Entre 6 y 10, cada una como tarea sin tildar, con este formato:
+  `- [ ] **Tendencia** · qué es (1 oración) · cómo la usaríamos con este cliente · [fuente](link)`
+- Arriba, un callout: "Tildá las tendencias que querés usar. Las ideas del día 25 usan solo las
+  tildadas."
+- Aplicá el criterio de arriba: una tendencia entra solo si sirve al objetivo del mes y no choca
+  con los límites de la marca. Mejor 6 buenas que 10 de relleno.
+- Si no tenés acceso a la web, no inventes tendencias: creá la página con "Sin búsqueda web en
+  esta corrida" y avisalo en el cierre.
+
+### 6. Contexto del mes siguiente
 
 Fechas especiales relevantes para el público y el país del cliente (Argentina, Miami/EE. UU.,
 etc.), temporada, fechas comerciales (Black Friday, Hot Sale, Navidad…) y cualquier evento de los
 insumos. Solo las que sirvan al negocio.
 
-### 5. Escribir el boceto
+### 7. Escribir el boceto
 
 Creá una subpágina dentro de la página **Estrategia**:
 **Estrategia · <Mes> <año> · Boceto** con ícono 🧭 (por ejemplo "Estrategia · Noviembre 2026 · Boceto").
@@ -78,14 +127,20 @@ Secciones (mismo estilo que los meses que ya están en la página):
   reparto según los datos.
 - **Objetivo comercial**: qué servicio o producto se empuja y con qué llamado a la acción.
 - **Fechas clave del mes**: fecha y cómo la usamos (o por qué no).
+- **Competidores**: 3 o 4 líneas con lo que sacamos del análisis y link a la página Competidores
+  (o "lista propuesta, esperando aprobación").
+- **Tendencias**: las que más sirven al objetivo, con link a la página de Tendencias del mes. Aclará
+  que las ideas usan solo las que Yvette tilde.
 - **Qué no hacer este mes**: lo que el informe mostró que no funciona, más los límites de la marca.
-- **Insumos usados**: qué se leyó (informe, insumos del mes, plan). Si faltaron insumos, decilo.
+- **Insumos usados**: qué se leyó (informe, insumos del mes, plan, competidores, tendencias). Si
+  faltaron insumos, decilo.
 - **Preguntas para Yvette**: solo si hay una duda real que cambia la estrategia.
 
 Estilo: español rioplatense, claro y directo, sin jerga ni frases de gurú, como el resto de la
 página. Separá dato de interpretación.
 
-### 6. Cierre
+### 8. Cierre
 
-Respondé con una línea por cliente: link al boceto, si había insumos del mes, y cualquier problema
-(página Estrategia no encontrada, boceto ya existente, sin informe previo).
+Respondé con una línea por cliente: link al boceto, link a Tendencias, si había insumos del mes,
+estado de competidores (propuestos para aprobar / analizados N) y cualquier problema (página
+Estrategia no encontrada, boceto ya existente, sin informe previo, sin búsqueda web).

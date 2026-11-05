@@ -60,6 +60,14 @@ peores posteos, frecuencia por mes, alcance por día y franja horaria, efecto de
 "Comentá PALABRA", tiempo de visualización de reels y si el dato de seguidores ganados es
 confiable. **Usá esos números; no los recalcules ni inventes otros.**
 
+Para la **comparación con el mes anterior**, corré además el mismo comando dos veces con fechas
+fijas (mismas opciones de token):
+
+```bash
+python -m informes_ig.datos --ig-id <IG ID> --desde <hoy-30> --hasta <hoy>       # últimos 30 días
+python -m informes_ig.datos --ig-id <IG ID> --desde <hoy-60> --hasta <hoy-31>    # los 30 anteriores
+```
+
 Si falla por permisos o porque la cuenta no aparece, anotalo y seguí con el siguiente cliente.
 
 ### 2. Estrategia en Notion
@@ -75,6 +83,10 @@ Dentro de la página del cliente:
   - Título con **Boceto** (sin aprobar): seguila igual y avisalo en el cierre ("estrategia de
     <mes> sin aprobar").
   - Si no existe: usá solo la estrategia base y avisalo en el cierre.
+- **Tendencias · <Mes> <año>** (subpágina 📈 de la página del cliente): usá solo las tendencias
+  **tildadas**. Si no hay ninguna tildada o la página no existe, no uses tendencias y avisalo.
+- **Competidores** (subpágina 🔎 de Estrategia): si tiene un bloque "Análisis", tomá de ahí qué les
+  funciona para inspirar ideas (adaptadas, nunca copiadas).
 - **Planificación de contenido → Plan de publicaciones**: mirá las columnas de la base (los
   nombres cambian un poco entre clientes: el estado puede no tener nombre, la fecha puede estar
   sin tilde, los pilares son propios de cada cliente) y las filas de los últimos dos meses, para
@@ -95,9 +107,33 @@ Estilo:
 - Mejores días y franjas horarias (indicá la zona horaria).
 - Cerrá con recomendaciones para el mes que viene.
 
-Secciones: resumen (3-4 oraciones) · lo que dicen los números · lo que funcionó · lo que no
-funcionó · frecuencia · mejores horarios · recomendaciones · tabla top 5 por alcance (con link) ·
-lista de ideas cargadas (con link a cada fila).
+Secciones: resumen (3-4 oraciones) · lo que dicen los números · **comparación con el mes
+anterior** · lo que funcionó · lo que no funcionó · frecuencia · mejores horarios · **FODA** ·
+**brainstorming** · recomendaciones · tabla top 5 por alcance (con link) · lista de ideas cargadas
+(con link a cada fila).
+
+- **Comparación con el mes anterior**: tabla con los dos JSON de 30 días (últimos 30 contra los 30
+  anteriores): publicaciones, alcance mediano, interacción mediana, guardados y compartidos
+  medianos, seguidores ganados (solo si `dato_confiable`), por formato si hay al menos 2 posteos
+  de cada uno. Columna de variación en % y una flecha (↑ ↓ =). Debajo, 2 o 3 oraciones sobre qué
+  cambió y por qué creés que pasó. Si un período tiene menos de 3 posteos, decí que la comparación
+  no es firme.
+- **FODA**: 2 a 4 puntos por cuadrante, cada uno apoyado en un dato del JSON, del plan o de
+  Competidores. Fortalezas y debilidades = la cuenta; oportunidades y amenazas = afuera (tendencias,
+  competidores, fechas, algoritmo).
+- **Brainstorming**: 8 a 12 ideas sueltas y cortas (una línea cada una) que salen del FODA, sin
+  filtrar por ritmo editorial. Las mejores pasan a ser las ideas del paso 4; marcá con ✅ cuáles.
+
+#### Versión para el cliente
+
+Dentro del informe, creá una subpágina **Informe para el cliente · <Mes> <año>** lista para
+mandar o exportar a PDF:
+- Tono cercano y en positivo, sin jerga y sin notas internas (nada de FODA, brainstorming,
+  problemas de tokens ni comentarios sobre el equipo).
+- Secciones: cómo nos fue este mes (3 o 4 números clave con la comparación) · lo que mejor
+  funcionó (top 3 con link) · lo que aprendimos · qué vamos a hacer el mes que viene (3 a 5
+  puntos de la estrategia del mes).
+- Máximo una página de largo. Mismos números que el informe interno.
 
 ### 4. Ideas → Plan de publicaciones
 
@@ -146,10 +182,23 @@ Reglas:
 - No repitas ideas que ya están en el plan.
 - Si a la base le falta alguna columna, poné ese contenido en el cuerpo de la página de la idea.
 
-### 5. Cierre
+### 5. Mail a Yvette
 
-Respondé con una línea por cliente: link al informe, cantidad de ideas cargadas, y cualquier
-problema (cuenta sin datos, página no encontrada, columna faltante).
+Cuando terminaste todos los clientes, mandá **un solo mail** con el conector de Gmail a la misma
+cuenta de Gmail conectada (la casilla de Hola Marketing, donde lo lee Yvette):
+- Asunto: **Informes Instagram · <Mes> <año> · resumen ejecutivo**
+- Por cliente, 3 líneas: cómo le fue contra el mes anterior (1 número clave con su variación), lo
+  más importante para decidir, y links al informe interno y a la versión para el cliente.
+- Al final, lo que necesita su atención: estrategias sin aprobar, tokens a renovar, clientes sin
+  datos, tendencias o competidores esperando que los tilde.
+- Si no hay conector de Gmail en la corrida, poné ese mismo resumen en el cierre y avisalo.
+- En **modo prueba** no mandes el mail: mostralo en la respuesta.
+
+### 6. Cierre
+
+Respondé con una línea por cliente: link al informe, link a la versión para el cliente, cantidad
+de ideas cargadas, y cualquier problema (cuenta sin datos, página no encontrada, columna
+faltante). Al final, si se mandó el mail a Yvette.
 
 ## Limitaciones conocidas
 
